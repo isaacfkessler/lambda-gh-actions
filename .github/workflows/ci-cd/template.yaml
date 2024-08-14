@@ -57,3 +57,11 @@ Resources:
       Targets:
         - Arn: !GetAtt MyLambdaFunction.Arn
           Id: MyLambdaFunctionTarget
+
+  LambdaInvokePermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      Action: lambda:InvokeFunction
+      FunctionName: !Ref MyLambdaFunction
+      Principal: events.amazonaws.com
+      SourceArn: !GetAtt MyScheduledRule.Arn
