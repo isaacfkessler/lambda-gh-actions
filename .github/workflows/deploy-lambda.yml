@@ -40,7 +40,7 @@ jobs:
     - name: Deploy CloudFormation Stack
       run: |
         aws cloudformation deploy \
-          --template-file './.github/workflows/template.yaml' \
+          --template-file './.github/workflows/ci-cd/template.yaml' \
           --stack-name lambda-gh-actions-test \
           --capabilities CAPABILITY_NAMED_IAM \
           --parameter-overrides DeploymentBucket=lambdasbucket-test-lab-gtk DeploymentKey=lambdas/lambda-gh-actions.zip
