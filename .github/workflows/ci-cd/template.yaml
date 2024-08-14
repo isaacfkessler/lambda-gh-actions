@@ -48,3 +48,12 @@ Resources:
                   - logs:CreateLogStream
                   - logs:PutLogEvents
                 Resource: "*"
+
+
+  MyScheduledRule:
+    Type: AWS::Events::Rule
+    Properties:
+      ScheduleExpression: cron(0/5 * * * ? *)  # Execute a cada 5 minutos
+      Targets:
+        - Arn: !GetAtt MyLambdaFunction.Arn
+          Id: MyLambdaFunctionTarget
